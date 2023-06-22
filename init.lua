@@ -384,7 +384,7 @@ vim.keymap.set({ 'n' }, "<leader>sp", search.project)
 vim.keymap.set({ 'n' }, "<leader>st", search.text)
 
 -- vscode
-vim.keymap.set({ 'n' }, "<leader>ve", vscode.focusEditor)
+vim.keymap.set({ 'n' }, "<leader>e", vscode.focusEditor)
 vim.keymap.set({ 'n' }, "<leader>vl", vscode.moveSideBarLeft)
 vim.keymap.set({ 'n' }, "<leader>vr", vscode.moveSideBarRight)
 
