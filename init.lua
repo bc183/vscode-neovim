@@ -211,6 +211,15 @@ local git = {
   commit = function()
     vim.fn.VSCodeNotify("git.commit")
   end,
+  acceptCommitMessage = function()
+    vim.fn.VSCodeNotify("git.commitMessageAccept")
+  end,
+  stage = function()
+    vim.fn.VSCodeNotify("git.stage")
+  end,
+  unstage = function()
+    vim.fn.VSCodeNotify("git.unstage")
+  end,
   publish = function()
     vim.fn.VSCodeNotify("git.publish")
   end,
@@ -273,6 +282,15 @@ local refactor = {
   end,
 }
 
+local terminal = {
+  toggleTerminal = function()
+    vim.fn.VSCodeNotify("workbench.action.terminal.toggleTerminal")
+  end,
+  splitTermial = function()
+    vim.fn.VSCodeNotify("workbench.action.terminal.split")
+  end
+}
+
 -- https://vi.stackexchange.com/a/31887
 local nv_keymap = function(lhs, rhs)
   vim.api.nvim_set_keymap('n', lhs, rhs, { noremap = true, silent = true })
@@ -331,6 +349,10 @@ vim.keymap.set({ 'n' }, "<leader>gf", git.fetch)
 vim.keymap.set({ 'n' }, "<leader>gs", git.status)
 vim.keymap.set({ 'n' }, "<leader>gp", git.pull)
 vim.keymap.set({ 'n' }, "<leader>gg", git.graph)
+vim.keymap.set({ 'n' }, "<leader>gc", git.commit)
+vim.keymap.set({ 'n' }, "cc", git.acceptCommitMessage)
+vim.keymap.set({ 'n' }, "+", git.stage)
+vim.keymap.set({ 'n' }, "-", git.unstage)
 
 -- project
 vim.keymap.set({ 'n' }, "<leader>pf", project.findFile)
@@ -398,4 +420,8 @@ vim.keymap.set({ 'n' }, "zc", fold.close)
 vim.keymap.set({ 'n' }, "zg", fold.allMarkerRegion)
 vim.keymap.set({ 'n' }, "zG", fold.openAllMarkerRegion)
 vim.keymap.set({ 'n' }, "za", fold.toggle)
+
+--terminal
+vim.keymap.set({ 'n' }, "<leader>t", terminal.toggleTerminal)
+vim.keymap.set({ 'n' }, "<leader>tv", terminal.splitTermial)
 --#endregion keymap
